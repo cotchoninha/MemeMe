@@ -38,7 +38,11 @@
                                             <action selector="choseFromLibrary:" destination="BYZ-38-t0r" id="Vrf-Bq-Qfh"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Camera" id="6yt-Ak-hh3"/>
+                                    <barButtonItem title="Camera" id="6yt-Ak-hh3">
+                                        <connections>
+                                            <action selector="choseFromCamera:" destination="BYZ-38-t0r" id="g1t-M1-9CX"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="weQ-H1-jQK">
@@ -53,6 +57,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="cameraButton" destination="6yt-Ak-hh3" id="oPE-iB-3Zm"/>
                         <outlet property="imagePickerView" destination="9OY-sd-IFX" id="96U-TG-9zg"/>
                     </connections>
                 </viewController>
