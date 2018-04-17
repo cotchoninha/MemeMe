@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -17,6 +17,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        topTextField.delegate = self
+        bottomTextField.delegate = self
         topTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.defaultTextAttributes = memeTextAttributes
         topTextField.textAlignment = .center
@@ -34,7 +36,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
         NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
         NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSAttributedStringKey.strokeWidth.rawValue: CGFloat(3.0)]
+        NSAttributedStringKey.strokeWidth.rawValue: CGFloat(-3.0)]
     
     @IBAction func choseFromLibrary(_ sender: Any) {
         let imagePicker = UIImagePickerController()
@@ -62,6 +64,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if let topText = topTextField.text{
+            if let bottomText = bottomTextField.text{
+                if topText == "TOP" || bottomText == "BOTTOM"{
+                    textField.text = ""
+                }
+            }
+        }
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
     
 
 
