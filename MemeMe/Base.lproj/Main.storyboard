@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Baseline standard spacing" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,20 +20,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9OY-sd-IFX">
-                                <rect key="frame" x="0.0" y="58" width="375" height="501"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9OY-sd-IFX">
+                                <rect key="frame" x="0.0" y="70" width="375" height="482"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="482" id="J2G-Vl-etb"/>
+                                </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="weQ-H1-jQK">
-                                <rect key="frame" x="16" y="567" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="weQ-H1-jQK">
+                                <rect key="frame" x="16" y="527.5" width="343" height="17"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rtU-MI-uaa">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gLd-jq-cLo">
+                                <rect key="frame" x="16" y="101" width="343" height="17"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rtU-MI-uaa">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem title="Library" id="mRk-ey-eXi">
                                         <connections>
@@ -45,18 +53,24 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gLd-jq-cLo">
-                                <rect key="frame" x="16" y="20" width="343" height="17"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="gLd-jq-cLo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="77b-ZQ-edz"/>
-                            <constraint firstItem="gLd-jq-cLo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Wre-LS-Jg9"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gLd-jq-cLo" secondAttribute="trailing" constant="16" id="e9I-e0-OTZ"/>
+                            <constraint firstItem="rtU-MI-uaa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="18d-YS-PGS"/>
+                            <constraint firstItem="9OY-sd-IFX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="5nT-5g-0zk"/>
+                            <constraint firstItem="rtU-MI-uaa" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="6Ov-9o-bXW"/>
+                            <constraint firstItem="9OY-sd-IFX" firstAttribute="centerX" secondItem="weQ-H1-jQK" secondAttribute="centerX" id="8xl-M8-5Ew"/>
+                            <constraint firstItem="9OY-sd-IFX" firstAttribute="leading" secondItem="rtU-MI-uaa" secondAttribute="leading" id="9CP-wT-CML"/>
+                            <constraint firstItem="rtU-MI-uaa" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Esg-jJ-cYd"/>
+                            <constraint firstItem="weQ-H1-jQK" firstAttribute="leading" secondItem="9OY-sd-IFX" secondAttribute="trailing" constant="-359" id="Hvz-Bj-7dU"/>
+                            <constraint firstItem="9OY-sd-IFX" firstAttribute="centerX" secondItem="gLd-jq-cLo" secondAttribute="centerX" id="QdR-uX-rxW"/>
+                            <constraint firstItem="9OY-sd-IFX" firstAttribute="trailing" secondItem="rtU-MI-uaa" secondAttribute="trailing" id="VRX-Px-GAf"/>
+                            <constraint firstAttribute="trailing" secondItem="9OY-sd-IFX" secondAttribute="trailing" id="csl-yt-Wbk"/>
+                            <constraint firstItem="9OY-sd-IFX" firstAttribute="top" secondItem="gLd-jq-cLo" secondAttribute="bottom" constant="-48" id="g3i-hZ-8DZ"/>
+                            <constraint firstItem="gLd-jq-cLo" firstAttribute="leading" secondItem="9OY-sd-IFX" secondAttribute="trailing" constant="-359" id="oOY-zQ-yry"/>
+                            <constraint firstItem="rtU-MI-uaa" firstAttribute="top" secondItem="9OY-sd-IFX" secondAttribute="bottom" constant="71" id="oxQ-Qk-BOx"/>
+                            <constraint firstItem="9OY-sd-IFX" firstAttribute="baseline" secondItem="weQ-H1-jQK" secondAttribute="firstBaseline" constant="11" symbolType="layoutAnchor" id="uIb-m2-gvi"/>
+                            <constraint firstItem="9OY-sd-IFX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ugs-66-mOK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
