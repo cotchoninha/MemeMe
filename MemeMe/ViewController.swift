@@ -15,6 +15,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     
+    struct memeObject {
+        var topText: String
+        var bottomText: String
+        var originalImage: UIImage
+        var memedImage: UIImage
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         topTextField.delegate = self
@@ -30,11 +38,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewWillAppear(_ animated: Bool) {
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        subscribeToKeyboardNotifications()
+        //subscribeToKeyboardNotifications
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide , object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        unsubscribeFromKeyboardNotifications()
+        //unsubscribeFromKeyboardNotifications
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
     }
     
     let memeTextAttributes:[String: Any] = [
@@ -84,9 +97,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @objc func keyboardWillShow(_ notification:Notification) {
+        // só executa as linhas abaixo (empurrar a tela pra cima quando keyboard aparecer) quando o bottomTextField for clicado
+        if bottomTextField.isFirstResponder{
         let heightOfTheKeyboard = getKeyboardHeight(notification)
-        
         view.frame.origin.y -= heightOfTheKeyboard
+        }
     }
     
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
@@ -96,22 +111,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return keyboardSize.cgRectValue.height
     }
     
-    func subscribeToKeyboardNotifications() {
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide , object: nil)
-    }
-    
-    func unsubscribeFromKeyboardNotifications() {
-        
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
-        
-    }
-    
     @objc func keyboardWillHide(_ notification:Notification) {
         view.frame.origin.y = 0
+    }
+    
+    func generateMemedImage() -> UIImage {
+        
+        // Render view to an image
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationController?.setToolbarHidden(true, animated: false)
+        
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.setToolbarHidden(false, animated: false)
+        
+        
+        return memedImage
+    }
+    
+    func save() {
+        // Create the meme
+        let meme = memeObject(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
     }
 
 
