@@ -53,6 +53,13 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S19-KD-7UM">
+                                <rect key="frame" x="17" y="20" width="49" height="42"/>
+                                <state key="normal" title="SHARE"/>
+                                <connections>
+                                    <action selector="shareButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GEi-Xn-PEz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -61,13 +68,17 @@
                             <constraint firstItem="9OY-sd-IFX" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Cz3-ty-qGR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gLd-jq-cLo" secondAttribute="trailing" constant="16" id="J6q-7e-ceH"/>
                             <constraint firstItem="weQ-H1-jQK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Lee-El-I4Z"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="S19-KD-7UM" secondAttribute="trailing" constant="20" symbolic="YES" id="NPr-99-76O"/>
                             <constraint firstItem="rtU-MI-uaa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Oc6-h2-kqU"/>
+                            <constraint firstItem="S19-KD-7UM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Two-M1-rTh"/>
                             <constraint firstItem="9OY-sd-IFX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UVk-uB-5va"/>
+                            <constraint firstItem="9OY-sd-IFX" firstAttribute="top" secondItem="S19-KD-7UM" secondAttribute="bottom" constant="8" id="UcQ-8i-5oS"/>
                             <constraint firstItem="9OY-sd-IFX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="WPj-Vv-tiY"/>
                             <constraint firstItem="rtU-MI-uaa" firstAttribute="top" secondItem="9OY-sd-IFX" secondAttribute="bottom" constant="71" id="XL1-dJ-7DD"/>
                             <constraint firstItem="9OY-sd-IFX" firstAttribute="baseline" secondItem="weQ-H1-jQK" secondAttribute="firstBaseline" constant="11" symbolType="layoutAnchor" id="YHC-V3-oYD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="weQ-H1-jQK" secondAttribute="trailing" constant="16" id="ZtY-Of-GRb"/>
                             <constraint firstItem="9OY-sd-IFX" firstAttribute="top" secondItem="gLd-jq-cLo" secondAttribute="bottom" constant="-52" id="fBc-sc-fwz"/>
+                            <constraint firstItem="S19-KD-7UM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="17" id="hof-6p-Ich"/>
                             <constraint firstItem="rtU-MI-uaa" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ie8-xl-Nqj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
