@@ -14,6 +14,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var shareButtonOutlet: UIButton!
+    @IBOutlet weak var toolBar: UIToolbar!
+    
+    
     
     struct memeObject {
         var topText: String
@@ -24,6 +28,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     override func viewDidLoad() {
+        shareButtonOutlet.isEnabled = false
         super.viewDidLoad()
         topTextField.delegate = self
         bottomTextField.delegate = self
@@ -113,22 +118,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @objc func keyboardWillHide(_ notification:Notification) {
         view.frame.origin.y = 0
+        shareButtonOutlet.isEnabled = true
     }
     
     func generateMemedImage() -> UIImage {
         
         // Render view to an image
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        self.navigationController?.setToolbarHidden(true, animated: false)
+        self.toolBar.isHidden = true
+        self.shareButtonOutlet.isHidden = true
         
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-        self.navigationController?.setToolbarHidden(false, animated: false)
-        
+        self.toolBar.isHidden = false
+        self.shareButtonOutlet.isHidden = false
         
         return memedImage
     }
@@ -147,8 +152,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
         }
         present(controller, animated: true, completion: nil)
-        
-        
     }
     
 }

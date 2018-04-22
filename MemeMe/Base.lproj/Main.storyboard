@@ -87,6 +87,8 @@
                         <outlet property="bottomTextField" destination="weQ-H1-jQK" id="OjG-Vb-58B"/>
                         <outlet property="cameraButton" destination="6yt-Ak-hh3" id="oPE-iB-3Zm"/>
                         <outlet property="imagePickerView" destination="9OY-sd-IFX" id="96U-TG-9zg"/>
+                        <outlet property="shareButtonOutlet" destination="S19-KD-7UM" id="qMb-jV-Abh"/>
+                        <outlet property="toolBar" destination="rtU-MI-uaa" id="cbV-dA-ayJ"/>
                         <outlet property="topTextField" destination="gLd-jq-cLo" id="3cq-IK-Dei"/>
                     </connections>
                 </viewController>
