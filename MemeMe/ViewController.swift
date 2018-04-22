@@ -14,9 +14,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
-    @IBOutlet weak var shareButtonOutlet: UIButton!
     @IBOutlet weak var toolBar: UIToolbar!
-    
+    @IBOutlet weak var topToolBar: UIToolbar!
+    @IBOutlet weak var shareButtonOutlet: UIBarButtonItem!
+    @IBOutlet weak var cancelButtonOutlet: UIBarButtonItem!
     
     
     struct memeObject {
@@ -42,6 +43,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         //subscribeToKeyboardNotifications
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
@@ -125,7 +127,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // Render view to an image
         self.toolBar.isHidden = true
-        self.shareButtonOutlet.isHidden = true
+        self.topToolBar.isHidden = true
         
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
@@ -133,7 +135,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         UIGraphicsEndImageContext()
         
         self.toolBar.isHidden = false
-        self.shareButtonOutlet.isHidden = false
+        self.topToolBar.isHidden = false
         
         return memedImage
     }
@@ -153,6 +155,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         present(controller, animated: true, completion: nil)
     }
+    
+    @IBAction func cancelButton(_ sender: Any) {
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
+        imagePickerView.image = nil
+    }
+    
     
 }
 
