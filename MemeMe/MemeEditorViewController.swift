@@ -126,19 +126,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         shareButtonOutlet.isEnabled = true
     }
     
+    func hideToolBar(toolBar: UIToolbar, otherToolBar: UIToolbar, isHidden: Bool){
+        toolBar.isHidden = isHidden
+        otherToolBar.isHidden = isHidden
+    }
     func generateMemedImage() -> UIImage {
         
-        // Render view to an image
-        self.toolBar.isHidden = true
-        self.topToolBar.isHidden = true
+        hideToolBar(toolBar: topToolBar, otherToolBar: toolBar, isHidden: true)
         
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        self.toolBar.isHidden = false
-        self.topToolBar.isHidden = false
+        hideToolBar(toolBar: topToolBar, otherToolBar: toolBar, isHidden: false)
         
         return memedImage
     }
