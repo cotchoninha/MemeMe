@@ -108,25 +108,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8QV-Jh-Yf9">
-                            <size key="itemSize" width="147" height="147"/>
+                            <size key="itemSize" width="100" height="100"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="memeCollectionViewCell" id="Oiu-li-PWu" customClass="MemeCollectionViewCell" customModule="MemeMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="147" height="147"/>
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="147" height="147"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MQg-OX-VcN">
-                                            <rect key="frame" x="0.0" y="0.0" width="147" height="147"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MQg-OX-VcN">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         </imageView>
                                     </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="MQg-OX-VcN" firstAttribute="top" secondItem="Oiu-li-PWu" secondAttribute="top" id="WbG-cu-Cwl"/>
+                                    <constraint firstAttribute="trailing" secondItem="MQg-OX-VcN" secondAttribute="trailing" id="aMl-hZ-W8o"/>
+                                    <constraint firstItem="MQg-OX-VcN" firstAttribute="leading" secondItem="Oiu-li-PWu" secondAttribute="leading" id="aP8-Cs-Uck"/>
+                                    <constraint firstAttribute="bottom" secondItem="MQg-OX-VcN" secondAttribute="bottom" id="bwi-Ug-q7o"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="memeCollectionImage" destination="MQg-OX-VcN" id="XKJ-MT-yjZ"/>
                                 </connections>
@@ -247,6 +252,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1711" y="-253"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="6fi-nC-dhW">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="iTn-hW-X16" customClass="DetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AKo-Xq-DFb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PvW-SA-qkO">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="PvW-SA-qkO" firstAttribute="top" secondItem="YAL-j4-je6" secondAttribute="top" id="JAB-KG-FLY"/>
+                            <constraint firstItem="PvW-SA-qkO" firstAttribute="leading" secondItem="YAL-j4-je6" secondAttribute="leading" id="MKC-ul-YN4"/>
+                            <constraint firstItem="YAL-j4-je6" firstAttribute="bottom" secondItem="PvW-SA-qkO" secondAttribute="bottom" id="XTr-uQ-GfE"/>
+                            <constraint firstItem="YAL-j4-je6" firstAttribute="trailing" secondItem="PvW-SA-qkO" secondAttribute="trailing" id="jxq-JY-RXK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YAL-j4-je6"/>
+                    </view>
+                    <connections>
+                        <outlet property="detailedImage" destination="PvW-SA-qkO" id="Swe-iN-ZlR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YiG-mw-kst" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1710" y="519"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

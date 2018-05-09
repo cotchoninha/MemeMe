@@ -11,13 +11,9 @@ import UIKit
 class MemeTableViewController: UITableViewController{
     
     var memes: [Meme]! {
-//        let object = UIApplication.shared.delegate
-//        let appDelegate = object as! AppDelegate
-//        return appDelegate.memes
-        var meme1 = Meme(topText: "hello", bottomText: "tchau", originalImage: #imageLiteral(resourceName: "me"), memedImage: #imageLiteral(resourceName: "me"))
-        var meme2 = Meme(topText: "2", bottomText: "2", originalImage: #imageLiteral(resourceName: "me"), memedImage: #imageLiteral(resourceName: "me"))
-        var meme3 = Meme(topText: "3", bottomText: "3", originalImage: #imageLiteral(resourceName: "me"), memedImage: #imageLiteral(resourceName: "me"))
-        return [meme1, meme2, meme3]
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        return appDelegate.memes
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

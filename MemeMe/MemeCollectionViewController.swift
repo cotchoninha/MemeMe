@@ -13,13 +13,9 @@ class MemeCollectionViewController: UICollectionViewController{
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     var memes: [Meme]! {
-//        let object = UIApplication.shared.delegate
-//        let appDelegate = object as! AppDelegate
-//        return appDelegate.memes
-        let meme1 = Meme(topText: "hello", bottomText: "tchau", originalImage: #imageLiteral(resourceName: "me"), memedImage: #imageLiteral(resourceName: "me"))
-        let meme2 = Meme(topText: "2", bottomText: "2", originalImage: #imageLiteral(resourceName: "me"), memedImage: #imageLiteral(resourceName: "me"))
-        let meme3 = Meme(topText: "3", bottomText: "3", originalImage: #imageLiteral(resourceName: "me"), memedImage: #imageLiteral(resourceName: "me"))
-        return [meme1, meme2, meme3]
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        return appDelegate.memes
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +35,7 @@ class MemeCollectionViewController: UICollectionViewController{
     }
     
     
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return memes.count
     }
     
@@ -52,19 +48,11 @@ class MemeCollectionViewController: UICollectionViewController{
         return cell
     }
     
-//    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
-//        let memeSquare = self.memes[indexPath.row]
-//
-//        cell.memeCollectionImage.image = memeSquare.memedImage
-//        return cell
-//
-//    }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "mainController") as! ViewController
-        detailVC.imagePickerView.image = memes[indexPath.row].memedImage
+        let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        
+        detailVC.detailedImage.image = memes[indexPath.row].memedImage
         navigationController?.pushViewController(detailVC, animated: true)
     }
     
