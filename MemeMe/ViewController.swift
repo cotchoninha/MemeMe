@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var imagePickerView: UIImageView!
@@ -20,13 +22,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var cancelButtonOutlet: UIBarButtonItem!
     
     
-    struct memeObject {
-        var topText: String
-        var bottomText: String
-        var originalImage: UIImage
-        var memedImage: UIImage
-        
-    }
+   
     
     override func viewDidLoad() {
         shareButtonOutlet.isEnabled = false
@@ -146,7 +142,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func save() {
         // Create the meme
-        let _ = memeObject(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
+        if let selectedImage = imagePickerView.image{
+            let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: selectedImage, memedImage: generateMemedImage())
+            
+            let object = UIApplication.shared.delegate
+            let appDelegate = object as! AppDelegate
+            appDelegate.memes.append(meme)
+            self.dismiss(animated: true, completion: nil)
+        }
+       
     }
 
     @IBAction func shareButton(_ sender: Any) {
@@ -161,9 +165,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func cancelButton(_ sender: Any) {
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
-        imagePickerView.image = nil
+        if let topText = topTextField.text{
+            if let bottomText = bottomTextField.text{
+                if topText == "TOP" && bottomText == "BOTTOM" && imagePickerView.image == nil{
+                    dismiss(animated: true, completion: nil)
+                }else{
+                    topTextField.text = "TOP"
+                    bottomTextField.text = "BOTTOM"
+                    imagePickerView.image = nil
+                }
+            }
+        }
     }
     
     
