@@ -20,6 +20,11 @@ class MemeTableViewController: UITableViewController{
 //        return [meme1, meme2, meme3]
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
